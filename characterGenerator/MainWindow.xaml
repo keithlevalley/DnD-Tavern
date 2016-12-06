@@ -1,0 +1,151 @@
+﻿<Window x:Class="characterGenerator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:characterGenerator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1280">
+    <Grid>
+        <StackPanel>
+            <StackPanel Width="Auto" Height="Auto">
+                <Label Name="Header" HorizontalAlignment="Center" Padding="10,10,10,10" FontWeight="Bold" FontStyle="Italic" >DnD 4th Edition Character Generator</Label>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <TextBox Name="NoCharsText" HorizontalAlignment="Left">No. of Characters?</TextBox>
+                    <ComboBox Name="comboBoxNumChars" >
+                        <ComboBoxItem IsSelected="True">10</ComboBoxItem>
+                        <ComboBoxItem>9</ComboBoxItem>
+                        <ComboBoxItem>8</ComboBoxItem>
+                        <ComboBoxItem>7</ComboBoxItem>
+                        <ComboBoxItem>6</ComboBoxItem>
+                        <ComboBoxItem>5</ComboBoxItem>
+                        <ComboBoxItem>4</ComboBoxItem>
+                        <ComboBoxItem>3</ComboBoxItem>
+                        <ComboBoxItem>2</ComboBoxItem>
+                        <ComboBoxItem>1</ComboBoxItem>
+                    </ComboBox>
+                    <TextBox Name="NoLvText" HorizontalAlignment="Left">Level of Characters?</TextBox>
+                    <ComboBox Name="comboBoxLevel">
+                        <ComboBoxItem IsSelected="True">1</ComboBoxItem>
+                        <ComboBoxItem>2</ComboBoxItem>
+                        <ComboBoxItem>3</ComboBoxItem>
+                        <ComboBoxItem>4</ComboBoxItem>
+                        <ComboBoxItem>5</ComboBoxItem>
+                        <ComboBoxItem>6</ComboBoxItem>
+                        <ComboBoxItem>7</ComboBoxItem>
+                        <ComboBoxItem>8</ComboBoxItem>
+                        <ComboBoxItem>9</ComboBoxItem>
+                        <ComboBoxItem>10</ComboBoxItem>
+                        <ComboBoxItem>11</ComboBoxItem>
+                        <ComboBoxItem>12</ComboBoxItem>
+                        <ComboBoxItem>13</ComboBoxItem>
+                        <ComboBoxItem>14</ComboBoxItem>
+                        <ComboBoxItem>15</ComboBoxItem>
+                        <ComboBoxItem>16</ComboBoxItem>
+                        <ComboBoxItem>17</ComboBoxItem>
+                        <ComboBoxItem>18</ComboBoxItem>
+                        <ComboBoxItem>19</ComboBoxItem>
+                        <ComboBoxItem>20</ComboBoxItem>
+                        <ComboBoxItem>21</ComboBoxItem>
+                        <ComboBoxItem>22</ComboBoxItem>
+                        <ComboBoxItem>23</ComboBoxItem>
+                        <ComboBoxItem>24</ComboBoxItem>
+                        <ComboBoxItem>25</ComboBoxItem>
+                        <ComboBoxItem>26</ComboBoxItem>
+                        <ComboBoxItem>27</ComboBoxItem>
+                        <ComboBoxItem>28</ComboBoxItem>
+                        <ComboBoxItem>29</ComboBoxItem>
+                        <ComboBoxItem>30</ComboBoxItem>
+                        <ComboBoxItem>31</ComboBoxItem>
+                        <ComboBoxItem>32</ComboBoxItem>
+                        <ComboBoxItem>33</ComboBoxItem>
+                        <ComboBoxItem>34</ComboBoxItem>
+                        <ComboBoxItem>35</ComboBoxItem>
+                        <ComboBoxItem>36</ComboBoxItem>
+                        <ComboBoxItem>37</ComboBoxItem>
+                        <ComboBoxItem>38</ComboBoxItem>
+                        <ComboBoxItem>39</ComboBoxItem>
+                        <ComboBoxItem>40</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="Auto" Height="Auto">
+                    <Label>Role:</Label>
+                    <Label>Damage</Label>
+                    <TextBox Name="DamageRole" Width="25" TextAlignment="Center" VerticalAlignment="Center"></TextBox>
+                    <Label>Defense</Label>
+                    <TextBox Name="DefenseRole" Width="25" TextAlignment="Center" VerticalAlignment="Center"></TextBox>
+                    <Label>Control</Label>
+                    <TextBox Name="ControlRole" Width="25" TextAlignment="Center" VerticalAlignment="Center"></TextBox>
+                    <Label>Leader</Label>
+                    <TextBox Name="LeaderRole" Width="25" TextAlignment="Center" VerticalAlignment="Center"></TextBox>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="Auto">
+                <Label HorizontalAlignment="Left" Padding="230,5,5,5" Width="350">Elf</Label>
+                <Slider x:Name="sliderElf" 
+                    Minimum="0" 
+                    Maximum="10"
+                    Padding="5,5,5,5"
+                    Width="200"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="Auto">
+                <Label HorizontalAlignment="Left" Padding="230,5,5,5" Width="350">Human</Label>
+                <Slider x:Name="sliderHuman" 
+                    Minimum="0" 
+                    Maximum="10"
+                    Padding="5,5,5,5"
+                    Width="200"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="Auto">
+                <Label HorizontalAlignment="Left" Padding="230,5,5,5" Width="350">Dwarf</Label>
+                <Slider x:Name="sliderDwarf" 
+                    Minimum="0" 
+                    Maximum="10"
+                    Padding="5,5,5,5"
+                    Width="200"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="Auto">
+                <Label HorizontalAlignment="Left" Padding="230,5,5,5" Width="350">Eladrin</Label>
+                <Slider x:Name="sliderEladrin" 
+                    Minimum="0" 
+                    Maximum="10"
+                    Padding="5,5,5,5"
+                    Width="200"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="Auto">
+                <Label HorizontalAlignment="Left" Padding="230,5,5,5" Width="350">Dragon Born</Label>
+                <Slider x:Name="sliderDragonBorn" 
+                    Minimum="0" 
+                    Maximum="10"
+                    Padding="5,5,5,5"
+                    Width="200"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="Auto">
+                <Label HorizontalAlignment="Left" Padding="230,5,5,5" Width="350">Halfling</Label>
+                <Slider x:Name="sliderHalfling" 
+                    Minimum="0" 
+                    Maximum="10"
+                    Padding="5,5,5,5"
+                    Width="200"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="Auto">
+                <Label HorizontalAlignment="Left" Padding="230,5,5,5" Width="350">Half Elf</Label>
+                <Slider x:Name="sliderHalfElf" 
+                    Minimum="0" 
+                    Maximum="10"
+                    Padding="5,5,5,5"
+                    Width="200"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="Auto">
+                <Label HorizontalAlignment="Left" Padding="230,5,5,5" Width="350">Tiefling</Label>
+                <Slider x:Name="sliderTiefling" 
+                    Minimum="0" 
+                    Maximum="10"
+                    Padding="5,5,5,5"
+                    Width="200"/>
+            </StackPanel>
+            <Button Name="SubmitButton" Width="100" Height="50" VerticalAlignment="Bottom" Padding="10,10,10,10" Margin="10,50,10,10" Click="SubmitButton_Click">Submit</Button>
+        </StackPanel>
+        
+    </Grid>
+</Window>

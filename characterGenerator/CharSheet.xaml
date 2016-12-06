@@ -1,0 +1,95 @@
+﻿<Window x:Class="characterGenerator.CharSheet"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:characterGenerator"
+        mc:Ignorable="d"
+        Title="CharSheet" Height="1900" Width="1440"
+        FontSize="14">
+    <Grid >
+        <StackPanel Orientation="Vertical" Margin="10,0,0,0">
+            <StackPanel Name="basicInfo" Orientation="Horizontal" HorizontalAlignment="Left">
+                <Label x:Name="labelName" Content="Name"/>
+                <Label x:Name="labelLevel" Content="Level" />
+                <Label x:Name="labelRace" Content="Race"/>
+                <Label x:Name="labelClass" Content="Class"/>
+            </StackPanel>
+            <StackPanel Name="miscInfo" Orientation="Horizontal" HorizontalAlignment="Left" >
+                <Label x:Name="labelLanguage" Content="Languages Spoken:" />
+                <Label x:Name="labelLanguageValue" Content="Level" />
+                <Label x:Name="labelSize" Content="Size:"/>
+                <Label x:Name="labelSizevalue" Content="Medium"/>
+            </StackPanel>
+            <StackPanel Name="defenses" Orientation="Horizontal" HorizontalAlignment="Left" >
+                <Label x:Name="LabelDefense" Content="Defenses:" FontWeight="Bold"/>
+                <Label x:Name="labelAC" Content="AC" />
+                <Label x:Name="labelACValue" Content="15" />
+                <Label x:Name="labelFort" Content="Fort" />
+                <Label x:Name="labelFortValue" Content="15"/>
+                <Label x:Name="labelRef" Content="Ref"/>
+                <Label x:Name="labelRefValue" Content="15"/>
+                <Label x:Name="labelWill" Content="Will"/>
+                <Label x:Name="labelWillValue" Content="15"/>
+                <Label x:Name="labelSpeed" Content="Speed:" FontWeight="Bold" Margin="50,0,0,0"/>
+                <Label x:Name="labelSpeedValue" Content="15"/>
+                <Label x:Name="labelInitiative" Content="Initiative:" FontWeight="Bold" Margin="50,0,0,0"/>
+                <Label x:Name="labelInitiativeValue" Content="15"/>
+            </StackPanel>
+            <StackPanel Name="health" Orientation="Horizontal">
+                <Label x:Name="labelHp" Content="Max Hit Points:" FontWeight="Bold"/>
+                <Label x:Name="labelHpValue" Content="15"/>
+                <Label x:Name="labelBloodied" Content="Bloodied:" FontWeight="Bold"/>
+                <Label x:Name="labelBloodiedValue" Content="15"/>
+                <Label x:Name="labelSurgeNum" Content="Number of Healing Surges:" FontWeight="Bold"/>
+                <Label x:Name="labelSurgeNumValue" Content="15"/>
+                <Label x:Name="labelSurge" Content="Healing Surge Value" FontWeight="Bold"/>
+                <Label x:Name="labelSurgeValue" Content="15"/>
+            </StackPanel>
+            <StackPanel Name="stats" Orientation="Horizontal">
+                <Label x:Name="labelStr" Content="Str:" FontWeight="Bold"/>
+                <Label x:Name="labelStrValue" Content="15"/>
+                <Label x:Name="labelStrModValue" Content="(+1)"/>
+                <Label x:Name="labelCon" Content="Con:" FontWeight="Bold"/>
+                <Label x:Name="labelConValue" Content="15"/>
+                <Label x:Name="labelConModValue" Content="(+1)"/>
+                <Label x:Name="labelDex" Content="Dex:" FontWeight="Bold"/>
+                <Label x:Name="labelDexValue" Content="15"/>
+                <Label x:Name="labelDexModValue" Content="(+1)"/>
+                <Label x:Name="labelInt" Content="Int:" FontWeight="Bold"/>
+                <Label x:Name="labelIntValue" Content="15"/>
+                <Label x:Name="labelIntModValue" Content="(+1)"/>
+                <Label x:Name="labelWis" Content="Wis:" FontWeight="Bold"/>
+                <Label x:Name="labelWisValue" Content="15"/>
+                <Label x:Name="labelWisModValue" Content="(+1)"/>
+                <Label x:Name="labelCha" Content="Cha:" FontWeight="Bold"/>
+                <Label x:Name="labelChaValue" Content="15"/>
+                <Label x:Name="labelChaModValue" Content="(+1)"/>
+            </StackPanel>
+            <StackPanel Name="equipment" Orientation="Horizontal">
+                <Label x:Name="labelArmor" Content="Armor:" FontWeight="Bold"/>
+                <Label x:Name="labelArmorValue" Content="chainmail"/>
+                <Label x:Name="labelMainHand" Content="Main Hand:" FontWeight="Bold"/>
+                <Label x:Name="labelMainHandValue" Content="Mace"/>
+                <Label x:Name="labelOffHand" Content="Off Hand:" FontWeight="Bold"/>
+                <Label x:Name="labelOffHandValue" Content="shield"/>
+                <Label x:Name="labelRangedWeapon" Content="Ranged Weapon:" FontWeight="Bold"/>
+                <Label x:Name="labelRangedWeaponValue" Content="Long Bow"/>
+                <Label x:Name="labelImplement" Content="Implement:" FontWeight="Bold"/>
+                <Label x:Name="labelImplementValue" Content="Holy Symbol"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label x:Name="labelSkills" Content="Skills" FontWeight="Bold" HorizontalAlignment="Left"/>
+                <Label x:Name="labelSkillsValue" Content="List of Skills"/>
+            </StackPanel>
+            <StackPanel>
+                <Label x:Name="labelSpecials" Content="Special Features" FontWeight="Bold" HorizontalAlignment="Left"/>
+                <Label x:Name="labelSpecialsValue" Content="List of Special Features"/>
+            </StackPanel>
+            <StackPanel>
+                <Label x:Name="labelAbility" Content="Abilities" FontWeight="Bold" HorizontalAlignment="Left"/>
+                <Label x:Name="labelAbilities" Content="Abilities" HorizontalAlignment="Left"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

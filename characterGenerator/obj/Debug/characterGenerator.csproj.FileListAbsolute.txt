@@ -1,0 +1,19 @@
+c:\users\klevalley2\documents\visual studio 2015\Projects\characterGenerator\characterGenerator\bin\Debug\characterGenerator.exe.config
+c:\users\klevalley2\documents\visual studio 2015\Projects\characterGenerator\characterGenerator\bin\Debug\characterGenerator.exe
+c:\users\klevalley2\documents\visual studio 2015\Projects\characterGenerator\characterGenerator\bin\Debug\characterGenerator.pdb
+c:\users\klevalley2\documents\visual studio 2015\Projects\characterGenerator\characterGenerator\obj\Debug\characterGenerator.csprojResolveAssemblyReference.cache
+c:\users\klevalley2\documents\visual studio 2015\Projects\characterGenerator\characterGenerator\obj\Debug\MainWindow.g.cs
+c:\users\klevalley2\documents\visual studio 2015\Projects\characterGenerator\characterGenerator\obj\Debug\App.g.cs
+c:\users\klevalley2\documents\visual studio 2015\Projects\characterGenerator\characterGenerator\obj\Debug\characterGenerator_MarkupCompile.cache
+c:\users\klevalley2\documents\visual studio 2015\Projects\characterGenerator\characterGenerator\obj\Debug\characterGenerator_MarkupCompile.lref
+c:\users\klevalley2\documents\visual studio 2015\Projects\characterGenerator\characterGenerator\obj\Debug\MainWindow.baml
+c:\users\klevalley2\documents\visual studio 2015\Projects\characterGenerator\characterGenerator\obj\Debug\characterGenerator.g.resources
+c:\users\klevalley2\documents\visual studio 2015\Projects\characterGenerator\characterGenerator\obj\Debug\characterGenerator.Properties.Resources.resources
+c:\users\klevalley2\documents\visual studio 2015\Projects\characterGenerator\characterGenerator\obj\Debug\characterGenerator.csproj.GenerateResource.Cache
+c:\users\klevalley2\documents\visual studio 2015\Projects\characterGenerator\characterGenerator\obj\Debug\characterGenerator.exe
+c:\users\klevalley2\documents\visual studio 2015\Projects\characterGenerator\characterGenerator\obj\Debug\characterGenerator.pdb
+C:\Users\klevalley2\Documents\Visual Studio 2015\Projects\characterGenerator\characterGenerator\obj\Debug\CharSheet.g.cs
+C:\Users\klevalley2\Documents\Visual Studio 2015\Projects\characterGenerator\characterGenerator\obj\Debug\CharSheet.baml
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\bin\Debug\characterGenerator.exe.config
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\obj\Debug\characterGenerator.exe
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\obj\Debug\characterGenerator.pdb

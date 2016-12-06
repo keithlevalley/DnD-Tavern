@@ -1,0 +1,25 @@
+## Name,Stat Bonus,Size,Speed,Vision,Languages,Racial Perks,Racial Abilities
+## Stat Key Char = 0, Con = 1, Dex = 2, Int = 3, Str = 4, Wis = 5
+## Skills Key Acrobatics = A, Arcana = B, Athletics = C, Bluff = D, Diplomacy = E, Dungeoneering = F, Endurance = G,
+## Heal = H, History = I, Insight = J, Intimidate = K, Nature = L, Perception = M, Religion = N, Stealth = O,
+## Streetwise = P, Thievery = Q
+## Language Key Ramdom = 0, Deep Speech = 1, Draconic = 2, Dwarven = 3, Elven = 4, Giant = 5, Goblin = 6,
+## Primordial = 7, Supernal = 8, Abyssal = 9
+##
+Dragonborn;40;M;6;Normal;2;DragonBorn Fury,Draconic Heritage,Dragon Breath
+Drow,2,0,2,0,0,0,M,6,Darkvision,Common Elven,0,0,0,0, ,Fey Origin Lolthtouched
+Dwarf,0,2,0,0,0,2,M,5,Low-Light,Common Dwarven,0,0,0,0,Save +5 vs Poison,Dwarven Resilience Prof. Hammers Encumbered Speed Stand Your Ground
+Eladrin,0,2,0,2,0,0,M,6,Low-Light,Common Elven,0,0,0,1,Save +5 vs Charms,Eladrin Education Longsword Prof Fey Step Fey Origin
+Elf,0,0,2,2,0,2,M,6,Low-Light,Common Elven,0,0,0,0, ,Elven Accuracy Prof. in Longsword Longbow Shortbow Wild Step Fey Origin
+Gnome,2,0,0,2,0,0,S,5,Low-Light,Common Elven,0,0,0,0,Save +5 vs Illusions,Fade Away Master Trickster Reactive Stealth Fey Origion
+Goblin,2,0,2,0,0,0,S,6,Low-Light,Common Goblin,0,0,1,0, ,Goblin Tactics
+Hal-Elf,2,2,0,0,0,0,M,6,Low-Light,Common Elven one other,0,0,0,0, ,Dilettante Human and Fey Origin
+Halfling,2,0,2,0,0,0,S,6,Normal	Common One Other,0,0,0,0,Save +5 vs Fear,Racial +2 AC vs Oppurtunity Attacks Second Chance
+Half-Orc,0,2,2,0,0,0,M,6,Low-Light,Common Giant,0,0,0,0, ,Furious Assault Half-Orc Resilience Swift Charge
+Hobgoblin,2,2,0,0,0,0,M,6,Low-Light,Common Goblin,2,0,0,0, ,Hobgoblin Resilience
+Human,2,2,2,2,2,2,M,6,Normal,Common One Other,0,0,0,0, ,Learn an additional skill bonus at-will
+Kobold,0,2,2,0,0,0,S,6,Normal,Common Draconic,0,0,0,0, ,Trap Sense
+Minotaur,0,2,0,0,2,2,M,6,Normal,Common One Other,0,0,0,0, ,Ferocity Goring Charge Heedless Charge
+Orc,0,2,0,0,2,0,M,6,Low-Light,Common Giant,0,0,0,0, ,Running Charge
+Tiefling,2,0,0,2,0,0,M,6,Low-Light,Common One Other,0,1,1,1,Resist Fire (5 + 1/2 Level),Bloodhunt +1 attack vs bloodied enemy Infernal Wrath
+Warforged,0,2,0,0,2,0,M,6,Normal,Common,0,0,0,1,Save +2 vs ongoing damage,Living Construct Warforged Resolve Power

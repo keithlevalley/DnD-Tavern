@@ -1,0 +1,24 @@
+## Name,Source,Role,Power Source,Primary Stat,Secondary Stat,Third Stat,HP per Level,Fort,Ref,Will,Armor Prof.,Weapon Prof., Skills, Features
+##
+Ardent,PHB 3,Leader,Psionic,Cha,Con,Wis,8,1,0,1,Cloth Leather Hide Chainmail,Simple and Military Melee simple ranged,Choose 2 from the Ardent List, Ardent Surge Ardent Mantle
+Avenger,PHB 2,Striker,Divine,Wis,Dex,Int,6,1,1,1,Cloth,Simple and Military Melee simple ranged,Religion plus one from the Avenger list, Armor of Faith Channel Divinity Oath of Emnity Holy Symbol Implement
+Barbarian,PHB 2,Striker,Primal,Str,Con,Cha,10,2,0,0,Cloth Leather Hide,Simple and Military Melee,Two Skills from from Barbarian List, Feral Might Rage Strike Rampage
+Bard,PHB 2,Leader,Arcane,Cha,Int,Con,8,0,1,1,Cloth Leather Hide Chainmail Shields,Simple Melee Simple and Military Ranged Longsword Scimitar Shortword,Arcana plus two from the Bard List, Bardic Training Majestic Word Words of Friendship Wand Implement
+Battlemind,PHB 3,Defender,Psionic,Con, Wis,Cha,8,0,0,2,Cloth Leather Hide Chainmail Scale Shields,Simple and Military Melee simple ranged,Choose 1 from the Battlemind list, Psionic Defense Psionic Study
+Cleric,PHB,Leader,Divine,Wis,Str,Cha,8,0,0,2,Cloth Leather Hide Chainmail,Simple Weapons,Religion plus 1 from cleric list, Channel Divinity (one Power) Healing Word Healer's Lore Holy Symbol Implements
+Druid,PHB 2,Controller,Primal,Wis,Dex,Con,8,0,1,1,Cloth Leather Hide,Simple melee and ranged,Nature plus one from the Druid List, Primal Aspect Ritual Casting Wildshape Staff & Totem Implements
+Fighter,PHB,Defender,Martial,Str,Dex,Con,8,2,0,0,Cloth Leather Hide Chainmail scale shields,Simple and Military weapons,Two from fighter Class list,Combat Challenge Combat Superiority Weapon Talent
+Invoker,PHB 2,Controller,Divine,Wis,Con,Int,6,1,1,1,Cloth Leather Hide Chainmail,Simple melee and ranged,Religion Plus one from the Invoker List,Channel Divinity Divine Covenant Ritual Caster
+Monk,PHB 3,Striker,Psionic,Dex,Str,Wis,8,1,1,1,Cloth,Club Dagger Monk Unarmed Strike Quarterstaff Shuriken Slink Spear,Choose 2 from the Monk list,Monastic Tradition Unarmed Combatant Unarmed Defense Ki Focus and weapon Implements
+Paladin,PHB,Defender,Divine,Str,Cha,Wis,8,1,1,1,Cloth Leather Hide Chainmail Scale Plate Shields,Simple and Military Melee simple ranged,Religion plus 1 from Paladin list,Divine Challenge Lay on Hands
+Psion,PHB 3,Controller,Psionic,Int,Cha,Wis,6,0,0,2,Cloth,Simple melee and ranged,Choose 2 from the Psion list,Discipline Focus Ritual Casting Orb and Staff Implements
+Ranger,PHB,Striker,Martial,Str,Dex,Wis,8,1,0,1,Cloth Leather Hide,Simpe and Military Melee Simple and Military Ranged,Dungeoneering or Nature plus 1 from Ranger List,Fighting Style Hunter's Quarry Prime Shot
+Rogue,PHB,Striker,Martial,Dex,Str,Cha,8,0,0,2,Cloth Leather,Dagger Hand Crossbow Shuriken Sling shortsword,Thievery plus one other Rogue skill,First Strike Rogue Weapon Mastery Sneak attack Rogue Tactics
+Runepriest	PHB 3	Leader	Divine	Str, Con, Wis	8			2	Cloth, Leather, Hide, Chainmail, Scale, Light Shields	Simple melee and ranged	Religion, plus 1 from the Runepriest list	Rune Master, Rune of Mending, Runic Artistry
+Seeker	PHB 3	Controller	Primal	Wis, Str, Dex	8		1	1	Cloth, Leather	Simple Melee, Simple and Military Ranged	Nature, plus 1 from the seeker lis	Inevitable Shot, Seeker's Bond
+Shaman	PHB 2	Leader	Primal	Wis, Con, Int	8	1		1	Cloth, Leather	Simple Melee, Longspear	Nature, Plus one from the Shaman List	Companion Spirit, Healing Spirt, Speak with Spirits, Totem Implement
+Sorcerer	PHB 2	Striker	Arcane	Cha, Dex, Str	8			2	Cloth	Simple Melee and Ranged	Arcana, Plus one from the Sorcerer list	Spell Source, Dagger and Staff Implements
+Warden	PHB 2	Defender	Primal	Str, Con, Wis	8	1		1	Cloth, Leather, Hide, Shields	Simple and Military Melee, simple ranged	Nature, plus one from the Warden List	Font of Life, Guardian Might, Nature's Wrath
+Warlock	PHB	Striker	Arcane	Cha, Con, Int	8		1	1	Cloth, Leather	Simple melee and ranged	Two Skills from Warlock list	Eldritch Blast, Eldritch Pact, Warlock's Curse, Prime Shot, Rod & Wand Implement
+Warlord	PHB	Leader	Martial	Str, Int, Cha, 	8	1		1	Cloth, Leather, Chainmail, Light Shields	Simple and Military Melee, Military Ranged	Two Skills from the Warlord Skill list	Compat Leader, Commanding Presence, Inspiring Word
+Wizard	PHB	Controller	Arcane	Int, Wis, Dex	6			2	Cloth	Dagger, Quarterstaff	Arcana, plus one from Wizard Skill list	Arcane Implement Mastery, Cantrips, Ritual Caster, Spellbook
