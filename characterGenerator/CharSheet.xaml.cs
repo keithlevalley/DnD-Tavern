@@ -52,6 +52,9 @@ namespace characterGenerator
             Race = new RaceTemplate(race);
             Job = new ArchType(type, level);
 
+            // invoke racial specials
+            racials();
+
             ldefenses = new int[4];
             lstats = new int[6];
             lstatsMod = new int[6];
@@ -245,7 +248,23 @@ namespace characterGenerator
             labelOffHandValue.Content = Job.offHand;
             labelImplementValue.Content = Job.implement;
             labelRangedWeaponValue.Content = Job.ranged;
+            
 
         } // end constructor
+
+        //*********************************************************************//
+        //                         Helper Methods                              //
+        //*********************************************************************//
+
+        public void racials()
+        {
+            if (this.Race.Name == "Dwarf")
+            {
+                if (this.Job.Speed < 0)
+                {
+                    this.Job.Speed = 0;
+                }
+            }
+        }
     } // end class
 } // end namespace

@@ -17,3 +17,16 @@ C:\Users\klevalley2\Documents\Visual Studio 2015\Projects\characterGenerator\cha
 C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\bin\Debug\characterGenerator.exe.config
 C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\obj\Debug\characterGenerator.exe
 C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\obj\Debug\characterGenerator.pdb
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\bin\Debug\characterGenerator.exe
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\bin\Debug\characterGenerator.pdb
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\obj\Debug\characterGenerator.csprojResolveAssemblyReference.cache
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\obj\Debug\CharSheet.g.cs
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\obj\Debug\MainWindow.g.cs
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\obj\Debug\App.g.cs
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\obj\Debug\characterGenerator_MarkupCompile.cache
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\obj\Debug\characterGenerator_MarkupCompile.lref
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\obj\Debug\CharSheet.baml
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\obj\Debug\MainWindow.baml
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\obj\Debug\characterGenerator.g.resources
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\obj\Debug\characterGenerator.Properties.Resources.resources
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\obj\Debug\characterGenerator.csproj.GenerateResource.Cache

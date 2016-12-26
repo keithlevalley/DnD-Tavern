@@ -20,6 +20,8 @@ namespace characterGenerator
         public List<String> ArchTypeSkills { get; set; }
         public List<String> ArchTypeSpecial { get; set; }
 
+        List<string[]> tempList = new List<string[]>();
+
         public String armor, mainHand, offHand, implement, ranged;
 
         public ArchType(String archType, int level)
@@ -56,7 +58,7 @@ namespace characterGenerator
                     createRogue();
                     break;
                 case "Warlord":
-                    createCleric(); //temp for test
+                    createWarlord(); //temp for test
                     break;
                 default:
                     createGeneric();
@@ -96,118 +98,78 @@ namespace characterGenerator
             ArchTypeSkills.Add("Heal");
             ArchTypeSkills.Add("History");
             ArchTypeSkills.Add("Insight");
-
-            do
-            {
-                int temp = MainWindow.rand.Next(4);
-                if (!ArchTypeAbilities.Contains(clericAtWill[temp]))
-                {
-                    ArchTypeAbilities.Add(clericAtWill[temp]);
-                }
-            } while (ArchTypeAbilities.Count != 2);
-
-            do
-            {
-                int temp = MainWindow.rand.Next(4);
-                if (!ArchTypeAbilities.Contains(clericEncounter[temp]))
-                {
-                    ArchTypeAbilities.Add(clericEncounter[temp]);
-                }
-            } while (ArchTypeAbilities.Count != 3);
-
-            if (Level >= 2)
-            {
-                do
-                {
-                    int temp = MainWindow.rand.Next(2);
-                    if (!ArchTypeAbilities.Contains(cleric2Utility[temp]))
-                    {
-                        ArchTypeAbilities.Add(cleric2Utility[temp]);
-                    }
-                } while (ArchTypeAbilities.Count != 4);
-            }
-
-            if (Level >= 3)
-            {
-                do
-                {
-                    int temp = MainWindow.rand.Next(4);
-                    if (!ArchTypeAbilities.Contains(cleric3Encounter[temp]))
-                    {
-                        ArchTypeAbilities.Add(cleric3Encounter[temp]);
-                    }
-                } while (ArchTypeAbilities.Count != 5);
-            }
-
+            
             ArchTypeAbilities.Add(ChannelDivinityTurnUndead);
             ArchTypeAbilities.Add(HealingWord);
+
+            atWillBuilder(clericAtWill);
+
+            tempList.Add(clericEncounter);
+
+            if (Level > 1)
+            {
+                tempList.Add(cleric2Utility);
+            }
+            if (Level > 2)
+            {
+                tempList[0] = cleric3Encounter;
+            }
+
+            abilityBuilder(tempList);
             
         } // end createCleric
 
         private void createWarlock()
         {
-            Name = "Ranger";
+            Name = "Warlock";
             armor = "Leather";
-            mainHand = "Longsword";
-            offHand = "Shortsword";
-            ranged = "Longbow";
-            implement = "";
+            mainHand = "dagger";
+            offHand = "";
+            ranged = "";
+            implement = "Rod";
 
             ArchTypeSpecial.Add(PrimeShot);
-            ArchTypeSpecial.Add(HuntersQuarry);
+            ArchTypeSpecial.Add(WarlocksCurse);
+            ArchTypeSpecial.Add(ShadowWalk);
 
-            Stats[0] = 18 + primStatModier(Level) + allStatModier(Level);
-            Stats[1] = 12 + allStatModier(Level);
-            Stats[2] = 18 + primStatModier(Level) + allStatModier(Level);
-            Stats[3] = 12 + allStatModier(Level);
-            Stats[4] = 16 + primStatModier(Level) + allStatModier(Level);
-            Stats[5] = 10 + allStatModier(Level);
+            Stats[0] = 10 + allStatModier(Level);
+            Stats[1] = 18 + primStatModier(Level) + allStatModier(Level);
+            Stats[2] = 10 + allStatModier(Level);
+            Stats[3] = 16 + primStatModier(Level) + allStatModier(Level);
+            Stats[4] = 12 + allStatModier(Level);
+            Stats[5] = 18 + primStatModier(Level) + allStatModier(Level);
 
             Defenses[0] = 2;
-            Defenses[1] = 1;
             Defenses[2] = 1;
+            Defenses[3] = 1;
             Speed = 0;
 
             HP = 12 + 5 * (Level);
             HealingSurges = 6;
 
-            ArchTypeSkills.Add("Dungeoneering");
-            ArchTypeSkills.Add("Nature");
-            ArchTypeSkills.Add("Acrobatics");
-            ArchTypeSkills.Add("Athletics");
-            ArchTypeSkills.Add("Perception");
-            ArchTypeSkills.Add("Stealth");
-            ArchTypeSkills.Add("Heal");
+            ArchTypeSkills.Add("Arcana");
+            ArchTypeSkills.Add("Bluff");
+            ArchTypeSkills.Add("History");
+            ArchTypeSkills.Add("Insight");
+            ArchTypeSkills.Add("Intimidate");
+            ArchTypeSkills.Add("Religion");
+            ArchTypeSkills.Add("Streetwise");
 
-            do
-            {
-                int temp = MainWindow.rand.Next(rangerAtWill.Count());
-                if (!ArchTypeAbilities.Contains(rangerAtWill[temp]))
-                {
-                    ArchTypeAbilities.Add(rangerAtWill[temp]);
-                }
-            } while (ArchTypeAbilities.Count != 2);
+            ArchTypeAbilities.Add(EldritchBlast);
+            ArchTypeAbilities.Add(warlockAtWill[MainWindow.rand.Next(warlockAtWill.Count())]);
 
-            do
-            {
-                int temp = MainWindow.rand.Next(rangerEncounter.Count());
-                if (!ArchTypeAbilities.Contains(rangerEncounter[temp]))
-                {
-                    ArchTypeAbilities.Add(rangerEncounter[temp]);
-                }
-            } while (ArchTypeAbilities.Count != 3);
+            tempList.Add(warlockEncounter);
 
-            if (Level >= 2)
+            if (Level > 1)
             {
-                do
-                {
-                    int temp = MainWindow.rand.Next(ranger2Utility.Count());
-                    if (!ArchTypeAbilities.Contains(ranger2Utility[temp]))
-                    {
-                        ArchTypeAbilities.Add(ranger2Utility[temp]);
-                    }
-                } while (ArchTypeAbilities.Count != 4);
+                tempList.Add(warlock2Utility);
             }
+            if (Level > 2)
+            {
+                tempList[0] = warlock3Encounter;
+            }
+
+            abilityBuilder(tempList);
         }
 
         private void createFighter()
@@ -243,128 +205,74 @@ namespace characterGenerator
             ArchTypeSkills.Add("Intimidate");
             ArchTypeSkills.Add("Streetwise");
 
-            do
-            {
-                int temp = MainWindow.rand.Next(4);
-                if (!ArchTypeAbilities.Contains(fighterAtWill[temp]))
-                {
-                    ArchTypeAbilities.Add(fighterAtWill[temp]);
-                }
-            } while (ArchTypeAbilities.Count != 2);
+            atWillBuilder(fighterAtWill);
 
-            do
-            {
-                int temp = MainWindow.rand.Next(4);
-                if (!ArchTypeAbilities.Contains(fighterEncounter[temp]))
-                {
-                    ArchTypeAbilities.Add(fighterEncounter[temp]);
-                }
-            } while (ArchTypeAbilities.Count != 3);
+            tempList.Add(fighterEncounter);
 
-            if (Level >= 2)
+            if (Level > 1)
             {
-                do
-                {
-                    int temp = MainWindow.rand.Next(2);
-                    if (!ArchTypeAbilities.Contains(fighter2Utility[temp]))
-                    {
-                        ArchTypeAbilities.Add(fighter2Utility[temp]);
-                    }
-                } while (ArchTypeAbilities.Count != 4);
+                tempList.Add(fighter2Utility);
+            }
+            if (Level > 2)
+            {
+                tempList[0] = fighter3Encounter;
             }
 
-            if (Level >= 3)
-            {
-                do
-                {
-                    int temp = MainWindow.rand.Next(4);
-                    if (!ArchTypeAbilities.Contains(fighter3Encounter[temp]))
-                    {
-                        ArchTypeAbilities.Add(fighter3Encounter[temp]);
-                    }
-                } while (ArchTypeAbilities.Count != 5);
-            }
-        }
+            abilityBuilder(tempList);
+
+        } // end fighter
 
         private void createPaladin()
         {
-            Name = "Fighter";
-            armor = "Scale";
+            Name = "Paladin";
+            armor = "Plate";
             mainHand = "Longsword";
-            offHand = "Light Shield";
+            offHand = "Heavy Shield";
             ranged = "";
-            implement = "";
-            ArchTypeSpecial.Add(combatChallenge);
-            ArchTypeSpecial.Add(combatSuperiority);
-            ArchTypeSpecial.Add(fighterWeaponTalent);
+            implement = "Divine Symbol";
 
-            Stats[0] = 18 + primStatModier(Level) + allStatModier(Level);
-            Stats[1] = 16 + primStatModier(Level) + allStatModier(Level);
-            Stats[2] = 16 + primStatModier(Level) + allStatModier(Level);
+            Stats[0] = 16 + primStatModier(Level) + allStatModier(Level);
+            Stats[1] = 14 + allStatModier(Level);
+            Stats[2] = 12 + allStatModier(Level);
             Stats[3] = 10 + allStatModier(Level);
             Stats[4] = 16 + primStatModier(Level) + allStatModier(Level);
-            Stats[5] = 10 + allStatModier(Level);
+            Stats[5] = 16 + primStatModier(Level) + allStatModier(Level);
 
-            Defenses[0] = 8;
-            Defenses[1] = 2;
+            Defenses[0] = 9;
+            Defenses[1] = 1;
             Defenses[2] = 1;
-            Speed = -1;
+            Defenses[3] = 1;
+            Speed = -2;
 
-            HP = 12 + 5 * (Level);
-            HealingSurges = 7;
+            HP = 15 + 6 * (Level);
+            HealingSurges = 10;
 
-            ArchTypeSkills.Add("Athletics");
+            ArchTypeSkills.Add("Religion");
+            ArchTypeSkills.Add("Diplomacy");
             ArchTypeSkills.Add("Endurance");
             ArchTypeSkills.Add("Heal");
             ArchTypeSkills.Add("Intimidate");
-            ArchTypeSkills.Add("Streetwise");
 
-            do
-            {
-                int temp = MainWindow.rand.Next(4);
-                if (!ArchTypeAbilities.Contains(fighterAtWill[temp]))
-                {
-                    ArchTypeAbilities.Add(fighterAtWill[temp]);
-                }
-            } while (ArchTypeAbilities.Count != 2);
+            ArchTypeAbilities.Add(ChannelDivinityDivineMettle);
+            ArchTypeAbilities.Add(ChannelDivinityDivineStrength);
+            ArchTypeAbilities.Add(DivineChallenge);
+            //ArchTypeAbilities.Add(LayOnHands);
 
-            do
-            {
-                int temp = MainWindow.rand.Next(4);
-                if (!ArchTypeAbilities.Contains(fighterEncounter[temp]))
-                {
-                    ArchTypeAbilities.Add(fighterEncounter[temp]);
-                }
-            } while (ArchTypeAbilities.Count != 3);
+            atWillBuilder(paladinAtWill);
 
-            if (Level >= 2)
+            tempList.Add(paladinEncounter);
+
+            if (Level > 2)
             {
-                do
-                {
-                    int temp = MainWindow.rand.Next(2);
-                    if (!ArchTypeAbilities.Contains(fighter2Utility[temp]))
-                    {
-                        ArchTypeAbilities.Add(fighter2Utility[temp]);
-                    }
-                } while (ArchTypeAbilities.Count != 4);
+                tempList[0] = paladin3Encounter;
             }
 
-            if (Level >= 3)
-            {
-                do
-                {
-                    int temp = MainWindow.rand.Next(4);
-                    if (!ArchTypeAbilities.Contains(fighter3Encounter[temp]))
-                    {
-                        ArchTypeAbilities.Add(fighter3Encounter[temp]);
-                    }
-                } while (ArchTypeAbilities.Count != 5);
-            }
+            abilityBuilder(tempList);
         }
 
         private void createWizard()
         {
-            Name = "Fighter";
+            Name = "generic";
             armor = "Scale";
             mainHand = "Longsword";
             offHand = "Light Shield";
@@ -473,187 +381,124 @@ namespace characterGenerator
             ArchTypeSkills.Add("Stealth");
             ArchTypeSkills.Add("Heal");
 
-            do
-            {
-                int temp = MainWindow.rand.Next(rangerAtWill.Count());
-                if (!ArchTypeAbilities.Contains(rangerAtWill[temp]))
-                {
-                    ArchTypeAbilities.Add(rangerAtWill[temp]);
-                }
-            } while (ArchTypeAbilities.Count != 2);
+            atWillBuilder(rangerAtWill);
 
-            do
-            {
-                int temp = MainWindow.rand.Next(rangerEncounter.Count());
-                if (!ArchTypeAbilities.Contains(rangerEncounter[temp]))
-                {
-                    ArchTypeAbilities.Add(rangerEncounter[temp]);
-                }
-            } while (ArchTypeAbilities.Count != 3);
+            tempList.Add(rangerEncounter);
 
-            if (Level >= 2)
+            if (Level > 1)
             {
-                do
-                {
-                    int temp = MainWindow.rand.Next(ranger2Utility.Count());
-                    if (!ArchTypeAbilities.Contains(ranger2Utility[temp]))
-                    {
-                        ArchTypeAbilities.Add(ranger2Utility[temp]);
-                    }
-                } while (ArchTypeAbilities.Count != 4);
+                tempList.Add(ranger2Utility);
+            }
+            if (Level > 2)
+            {
+                tempList[0] = ranger3Encounter;
             }
 
-            if (Level >= 3)
-            {
-                do
-                {
-                    int temp = MainWindow.rand.Next(ranger3Encounter.Count());
-                    if (!ArchTypeAbilities.Contains(ranger3Encounter[temp]))
-                    {
-                        ArchTypeAbilities.Add(ranger3Encounter[temp]);
-                    }
-                } while (ArchTypeAbilities.Count != 5);
-            }
+            abilityBuilder(tempList);
+
         }
 
         private void createRogue()
         {
-            Name = "Ranger";
+            Name = "Rogue";
             armor = "Leather";
-            mainHand = "Longsword";
-            offHand = "Shortsword";
-            ranged = "Longbow";
+            mainHand = "Dagger";
+            offHand = "";
+            ranged = "Hand Crossbow";
             implement = "";
 
-            ArchTypeSpecial.Add(PrimeShot);
-            ArchTypeSpecial.Add(HuntersQuarry);
+            ArchTypeSpecial.Add(FirstStrike);
+            ArchTypeSpecial.Add(ArtFulDodger);
+            ArchTypeSpecial.Add(RogueWeaponTalent);
+            ArchTypeSpecial.Add(SneakAttack);
 
-            Stats[0] = 18 + primStatModier(Level) + allStatModier(Level);
+            Stats[0] = 16 + primStatModier(Level) + allStatModier(Level);
             Stats[1] = 12 + allStatModier(Level);
             Stats[2] = 18 + primStatModier(Level) + allStatModier(Level);
             Stats[3] = 12 + allStatModier(Level);
-            Stats[4] = 16 + primStatModier(Level) + allStatModier(Level);
-            Stats[5] = 10 + allStatModier(Level);
+            Stats[4] = 14 + allStatModier(Level);
+            Stats[5] = 16 + primStatModier(Level) + allStatModier(Level);
 
             Defenses[0] = 2;
-            Defenses[1] = 1;
-            Defenses[2] = 1;
+            Defenses[2] = 2;
             Speed = 0;
 
             HP = 12 + 5 * (Level);
             HealingSurges = 6;
 
-            ArchTypeSkills.Add("Dungeoneering");
-            ArchTypeSkills.Add("Nature");
+            ArchTypeSkills.Add("Stealth");
+            ArchTypeSkills.Add("Thievery");
             ArchTypeSkills.Add("Acrobatics");
             ArchTypeSkills.Add("Athletics");
+            ArchTypeSkills.Add("Dungeoneering");
             ArchTypeSkills.Add("Perception");
-            ArchTypeSkills.Add("Stealth");
-            ArchTypeSkills.Add("Heal");
+            ArchTypeSkills.Add("Streetwise");
+            
+            atWillBuilder(rogueAtWill);
 
-            do
-            {
-                int temp = MainWindow.rand.Next(rangerAtWill.Count());
-                if (!ArchTypeAbilities.Contains(rangerAtWill[temp]))
-                {
-                    ArchTypeAbilities.Add(rangerAtWill[temp]);
-                }
-            } while (ArchTypeAbilities.Count != 2);
+            tempList.Add(rogueEncounter);
 
-            do
+            if (Level > 1)
             {
-                int temp = MainWindow.rand.Next(rangerEncounter.Count());
-                if (!ArchTypeAbilities.Contains(rangerEncounter[temp]))
-                {
-                    ArchTypeAbilities.Add(rangerEncounter[temp]);
-                }
-            } while (ArchTypeAbilities.Count != 3);
-
-            if (Level >= 2)
+                tempList.Add(rogue2Utility);
+            }
+            if (Level > 2)
             {
-                do
-                {
-                    int temp = MainWindow.rand.Next(ranger2Utility.Count());
-                    if (!ArchTypeAbilities.Contains(ranger2Utility[temp]))
-                    {
-                        ArchTypeAbilities.Add(ranger2Utility[temp]);
-                    }
-                } while (ArchTypeAbilities.Count != 4);
+                tempList[0] = rogue3Encounter;
             }
 
-            if (Level >= 3)
-            {
-                do
-                {
-                    int temp = MainWindow.rand.Next(ranger3Encounter.Count());
-                    if (!ArchTypeAbilities.Contains(ranger3Encounter[temp]))
-                    {
-                        ArchTypeAbilities.Add(ranger3Encounter[temp]);
-                    }
-                } while (ArchTypeAbilities.Count != 5);
-            }
+            abilityBuilder(tempList);
         }
 
         private void createWarlord()
         {
-            Name = "Cleric";
+            Name = "Warlord";
             armor = "Chainmail";
-            mainHand = "Mace";
-            offHand = "";
+            mainHand = "Longsword";
+            offHand = "light shield";
             ranged = "";
-            implement = "Holy Symbol";
-            ArchTypeSpecial.Add(HealingLore);
+            implement = "";
+            ArchTypeSpecial.Add(CombatLeader);
+            ArchTypeSpecial.Add(CommandingPresence);
 
-            Stats[0] = 16 + primStatModier(Level) + allStatModier(Level);
+            Stats[0] = 18 + primStatModier(Level) + allStatModier(Level);
             Stats[1] = 12 + allStatModier(Level);
             Stats[2] = 12 + allStatModier(Level);
-            Stats[3] = 12 + allStatModier(Level);
-            Stats[4] = 18 + primStatModier(Level) + allStatModier(Level);
+            Stats[3] = 16 + primStatModier(Level) + allStatModier(Level);
+            Stats[4] = 12 + allStatModier(Level);
             Stats[5] = 16 + primStatModier(Level) + allStatModier(Level);
 
             Defenses[0] = 6;
-            Defenses[3] = 2;
+            Defenses[1] = 1;
+            Defenses[2] = 1;
+            Defenses[3] = 1;
             Speed = -1;
 
             HP = 12 + 5 * (Level);
             HealingSurges = 7;
 
-            ArchTypeSkills.Add("Religion");
-            ArchTypeSkills.Add("Arcana");
+            ArchTypeSkills.Add("Athletics");
             ArchTypeSkills.Add("Diplomacy");
+            ArchTypeSkills.Add("Endurance");
             ArchTypeSkills.Add("Heal");
             ArchTypeSkills.Add("History");
-            ArchTypeSkills.Add("Insight");
+            ArchTypeSkills.Add("Intimidate");
 
-            do
-            {
-                int temp = MainWindow.rand.Next(4);
-                if (!ArchTypeAbilities.Contains(clericAtWill[temp]))
-                {
-                    ArchTypeAbilities.Add(clericAtWill[temp]);
-                }
-            } while (ArchTypeAbilities.Count != 2);
+            ArchTypeAbilities.Add(InspiringWord);
+            atWillBuilder(warlordAtWill);
 
-            do
-            {
-                int temp = MainWindow.rand.Next(4);
-                if (!ArchTypeAbilities.Contains(clericEncounter[temp]))
-                {
-                    ArchTypeAbilities.Add(clericEncounter[temp]);
-                }
-            } while (ArchTypeAbilities.Count != 3);
+            tempList.Add(warlordEncounter);
 
-            if (Level >= 2)
+            if (Level > 1)
             {
-                do
-                {
-                    int temp = MainWindow.rand.Next(2);
-                    if (!ArchTypeAbilities.Contains(cleric2Utility[temp]))
-                    {
-                        ArchTypeAbilities.Add(cleric2Utility[temp]);
-                    }
-                } while (ArchTypeAbilities.Count != 4);
+                tempList.Add(warlord2Utility);
             }
+            if (Level > 2)
+            {
+                tempList[0] = warlord3Encounter;
+            }
+
+            abilityBuilder(tempList);
         }
 
         private void createGeneric()
@@ -679,6 +524,28 @@ namespace characterGenerator
             else return 2;
         }
 
+        private void atWillBuilder(string[] atWills)
+        {
+            int count = 0;
+            do
+            {
+                int temp = MainWindow.rand.Next(atWills.Count());
+                if (!ArchTypeAbilities.Contains(atWills[temp]))
+                {
+                    ArchTypeAbilities.Add(atWills[temp]);
+                    count++;
+                }
+            } while (count != 2);
+        }
+
+        private void abilityBuilder(List<string[]> abilityList)
+        {
+            foreach (var ability in abilityList)
+            {
+                this.ArchTypeAbilities.Add(
+                    ability[MainWindow.rand.Next(ability.Count())]);
+            }
+        }
 
 
         //****************************************************************************************//
@@ -953,6 +820,333 @@ namespace characterGenerator
 + "you push the target 1 + `WISMOD` squares.\n";
 
         static string[] ranger3Encounter = new string[] { CutandRun, DisruptiveStrike, ShadowWaspStrike, ThundertuskBoarStrike };
+
+
+        // Paladin Class Features
+
+        static string ChannelDivinityDivineMettle = "Channel Divinity: Divine Mettle\n"
++ "Encounter - Divine - Minor - Close burst 10 - One creature in burst\n"
++ "Effect: The target makes a saving throw with a +`CHAMOD` bonus to the roll.";
+
+        static string ChannelDivinityDivineStrength = "Channel Divinity: Divine Strength\n"
++ "Encounter - Divine - Minor - Personal\n"
++ "Effect: Your next attack this turn does +`STRMOD` bonus damage.";
+
+        static string DivineChallenge = "Divine Challenge\n"
++ "At-Will - Divine, Radiant - Minor - Close burst 5, One creature in burst\n"
++ "You mark the target.  The target remains marked until you mark another target.You must either attack the target on your turn or end your turn adjacent to it \n"
++ " or the target is no longer marked and you cannot use Divine Challenge on your next turn.  While the target is marked it takes a -2 penalty to any attack that \n"
++ "doesn't include you as the target and takes 3 + `CHAMOD` for the first attack that doesn't include you as the target.";
+
+        static string LayOnHands = "Lay on Hands\n"
++ "At-Will - Divine, Healing - Minor - melee touch - One creature\n"
++ "Effect: You spend a healing surge but regain no hp.  Instead the target regains hit points as if it had spent a healing surge.\n"
++ "Special:  You can use this ability `WISMOD` times per day.";
+
+        // Paladin At-Wills
+        static string BolsteringStrike = "Bolstering Strike\n"
++ "At-Will - Divine, Weapon - Standard - Melee Weapon - One Creature | Attack: +`CHAWEA` vs. AC\n"
++ "Hit: 1[W] + `CHAMOD`, and you gain `WISMOD` temporary hp .";
+
+        static string EnfeeblingStrike = "Enfeebling Strike\n"
++ "At-Will - Divine, Weapon - Standard - Melee Weapon - One Creature | Attack: +`CHAWEA` vs AC\n"
++ "Hit: 1[W] +`CHAMOD`.  If you marked the target, it takes a -2 penalty to attack rolls until the end of your next turn.";
+
+        static string HolyStrike = "Holy Strike\n"
++ "At-Will - Divine, Radiant, Weapon - Standard - Melee Weapon - One Creature | Attack: +`STRWEA` vs AC\n"
++ "Hit: 1[W] +`STRMOD` radiant damage.  If you marked the target, you gain a +`WISMOD` bonus damage to the attack.";
+
+        static string ValiantStrike = "Valiant Strike\n"
++ "At-Will - Divine, Weapon - Standard - Melee Weapon - One Creature | Attack: +`STRWEA` + 1 per enemy adjacent to you vs AC\n"
++ "Hit: 1[W] + `STRMOD` damage.";
+
+        static string[] paladinAtWill = new string[] { BolsteringStrike, EnfeeblingStrike, HolyStrike, ValiantStrike };
+
+        // Paladin Encounters
+        static string FearsomeSmite = "Fearsome Smith\n"
++ "Encounter - Divine, Fear, Weapon - Standard - Melee Weapon - One Creature | Attack: +`CHAWEA` vs AC\n"
++ "Hit: 2[W] + `CHAMOD` damage.  Until the end of your next turn the target takes a -`WISMID` penalty to attack rolls.";
+
+        static string PiercingSmite = "Piercing Smite\n"
++ "Encounter - Divine, Weapon - Standard - Melee weapon - One creature | Attack: +`STRWEA` vs Reflex\n"
++ "Hit: 2[W] +`STRMOD` damage, and `WISMOD` enemies adjacent to you are marked until the end of your next turn.\n";
+
+        static string RadiantSmite = "Radiant Smite\n"
++ "Encounter - Divine, Radiant, Weapon - Standard - Melee Weapon - One Creature | Attack: +`STRWEA` vs AC\n"
++ "Hit: 2[W] +`STRMOD` +`WISMOD` radiant damage.";
+
+        static string ShieldingSmite = "Shielding Smite\n"
++ "Encounter - Divine, Weapon - Standard - Melee Weapon - One Creature | Attack: +`CHAWEA` vs AC\n"
++ "Hit: 2[W] +`CHAMOD` Effect: Until the end of your next turn, one ally within 5 squares gains a +`WISMOD` bonus to AC.";
+
+        static string[] paladinEncounter = new string[] { FearsomeSmite, PiercingSmite, RadiantSmite, ShieldingSmite };
+
+        // Paladin Level 2 Utility Prayers
+        static string SacredCircle = "Sacred Circle\n"
++ "Encounter - Divine, Implement, Zone - Standard - Close burst 3\n"
++ "Effect: The burst creates a zone that, until the end of your next turn gives you and allies within it a +1 bonus to AC.";
+
+        static string[] paladin2Utility = new string[] { SacredCircle };
+
+        // Paladin Level 3 Encounter Prayers
+        static string ArcingSmite = "Arcing Smite\n"
++ "Encounter - Divine, Weapon - Standard - Melee Weapon - One or two Creatures | Attack: +`STRWEA` vs AC, one attack per target\n"
++ "Hit: 1[W] +`STRMOD` damage, and the target is marked until the end of your next turn.";
+
+        static string InvigoratingSmite = "Invigorating Smite\n"
++ "Encounter - Divine, Healing, Weapon - Standard - Melee Weapon - One Creature | Attack: +`CHAWEA` vs Will\n"
++ "Hit: 2[W] + `CHAMOD` damage.  Bloodied allies within 5 squares (you included) regain 5 + `WISMOD` hp.";
+
+        static string RighteousSmite = "Righteous Smite\n"
++ "Encounter - Divine, Healing, Weapon - Standard - Melee Weapon - One Creature | Attack: +`CHAWEA` vs AC\n"
++ "Hit: 2[W] +`CHAMOD` damage, and you and each ally within 5 squares gains 5 +`WISMOD` temporary hp\n";
+
+        static string StaggeringSmite = "Staggering Smite\n"
++ "Encounter - Divine, Weapon - Standard - Melee Weapon - One Creature | Attack: +`STRWEA` vs AC\n"
++ "Hit: 2[W] +`STRMOD` damage, and you push the target `WISMOD` squares.";
+
+        static string[] paladin3Encounter = new string[] { ArcingSmite, InvigoratingSmite, RighteousSmite, StaggeringSmite };
+
+        // Rogue Specials
+        static string FirstStrike = "At the start of the encounter, you have combat advantage against any creature that has not acted";
+
+        static string ArtFulDodger = "You gain a +`CHAMOD` AC bonus against opportunity attacks.";
+
+        static string RogueWeaponTalent = "When you wield a dagger, you gain a +1 bonus to attack rolls.";
+
+        static string SneakAttack = "Once per round if you have combat advantage against the target.  You do 2d6 bonus damage to an attack.";
+
+        // Rogue At-Wills
+        static string DeftStrike = "Deft Strike\n"
++ "At-Will - Martial, Weapon - Standard - Melee or Ranged Weapon - One Creature | Attack: +`DEXWEA` vs AC\n"
++ "Hit: 1[W] +`DEXMOD` damage.  Special:  You can move 2 spaces before the attack.";
+
+        static string PiercingStrike = "Piercing Strike\n"
++ "At-Will - Martial, Weapon - Standard - Melee Weapon - One Creature | Attack: +`DEXWEA` vs Reflex\n"
++ "Hit: 1[W] +`DEXMOD` damage.";
+
+        static string RiposteStrike = "Riposte Strike\n"
++ "At-Will - Martial, Weapon - Standard - Melee Weapon - One Creature | Attack: +`DEXWEA` vs AC\n"
++ "Hit: 1[W] +`DEXMOD` damage.  If the target attacks you before your next turn you make an attack as an immediate interuppt.\n"
++ "Attack: +`STRWEA` vs AC and deals 1[W] + `STRMOD` damage.";
+
+        static string SlyFlourish = "Sly Flourish\n"
++ "At-Will - Martial, Weapon - Standard - Melee or Ranged Weapon - One Creature | Attack: +`DEXWEA` vs AC\n"
++ "Hit: 1[W] +`DEXMOD` +`CHAMOD`\n";
+
+        static string[] rogueAtWill = new string[] { DeftStrike, PiercingStrike, RiposteStrike, SlyFlourish };
+
+        // Rogue Encounters
+        static string DazingStrike = "Dazing Strike\n"
++ "Encounter - Martial, Weapon - Standard - Melee Weapon - One Creature | Attack: +`DEXWEA` vs AC\n"
++ "Hit: 1[W] +`DEXMOD` damage, and the target is dazed until the end of your next turn.";
+
+        static string KingsCastle = "King's Castle\n"
++ "Encounter - Martial, Weapon - Standard - Melee or Ranged Weapon - One Creature | Attack: +`DEXWEA` vs Reflex\n"
++ "Hit: 2[W] +`DEXMOD` damage.  Effect: Switch places with a willing adjacent ally.";
+
+        static string PositioningStrike = "Positioning Strike\n"
++ "Encounter - Martial, Weapon - Melee Weapon - One creature | Attack: +`DEXWEA` vs Will \n"
++ "Hit: 1[W] +`DEXMOD` damage, and you slide the target `CHAMOD` squares."
++ "Special You can shift 1 square, then make a basic attack against the enemy with a power bonus of `WISMOD`\n";
+        
+        static string[] rogueEncounter = new string[] { DazingStrike, KingsCastle, PositioningStrike };
+
+        // Rogue Level 2 Utility
+        static string FleetingGhost = "Fleeting Ghost\n"
++ "At-Will - Martial - Move - Personal\n"
++ "Effect: You can move your speed and make a Stealth check.  You do not take the normal penalty from movement on this check.";
+
+        static string[] rogue2Utility = new string[] { FleetingGhost };
+
+        // Ranger Level 3 Encounter
+        static string BaitandSwitch = "Bait and Switch\n"
++ "Encounter - Martial, Weapon - Standard - Melee Weapon - One Creature | Attack: +`DEXWEA` vs Will\n"
++ "Hit: 2[W] +`DEXMOD` damage.  In addition, you switch places with the target and can shift `CHAMOD` squares.";
+
+        static string SetupStrike = "Disruptive Strike\n"
++ "Encounter - Martial, Weapon - Immediate Interrupt - Melee or Ranged Weapon - The attacking Creature | Attack: (+`STRWEA` (Melee) or `DEXWEA` (Ranged)) vs AC\n"
++ "Trigger: You or an ally is attacked by a creature.\n"
++ "Hit: 1[W] +`STRMOD` (Melee) or 1[W] +`DEXMOD` damage per attack.  The target takes a 3 + `WISMOD` penalty to the triggering attack roll.\n";
+
+        static string ToppleOver = "Topple Over\n"
++ "Encounter - Martial, Weapon - Standard - Melee Weapon - One Creature | Attack: +`DEXWEA` vs AC\n"
++ "Hit: 1[W] +`DEXMOD` damage, and the target is knocked prone.";
+
+        static string TrickstersBlade = "Trickster's Blade\n"
++ "Encounter - Martial, Weapon - Standard - Melee or Ranged Weapon - One Creature | Attack: +`DEXWEA` vs AC\n"
++ "Hit: 2[W] +`DEXMOD`.  You gain a +`CHAMOD` bonus to AC until the start of your next turn."
++ "you push the target 1 + `WISMOD` squares.\n";
+
+        static string[] rogue3Encounter = new string[] { BaitandSwitch, SetupStrike, ToppleOver, TrickstersBlade };
+
+
+        // warlock Specials
+        static string ShadowWalk = "On your turn, if you move at least 3 squares away from where you started your turn, you gain concealment until the end of your next turn.";
+
+        static string WarlocksCurse = "Once per turn as a minor action you can place a Warlock's curse on the enemy nearest to you that you can see.  A cursed enemy is more \n"
++ "vulnerable to your attacks.  You may deal an additional 1d6 dmg to a cursed target, you may only do this to one target per round.";
+
+        // Warlocks At-Wills
+        static string DireRadiance = "Dire Radiance\n"
++ "At-Will - Arcane, Fear, Implement, Radiant - Standard - Ranged 10 - One Creature | Attack: +`CONIMP` vs Fortitude\n"
++ "Hit: 1d6 +`CONMOD` radiant damage.  If the target moved nearer to you on its next turn, it takes an additional 1d6 +`CONMOD` damage";
+
+        static string EldritchBlast = "Eldritch Blast\n"
++ "At-Will - Arcane, Implement - Standard - Ranged 10 - One Creature | Attack: +(`CHAIMP` or `CONIMP`) vs Reflex\n"
++ "Hit: 1d10 +(`CHAMOD` or `CONMOD`) damage.  Special: This ability counts as a basic ranged attack.";
+
+        static string Eyebite = "Eyebite\n"
++ "At-Will - Arcane, Charm, Implement, Psychic - Standard - Ranged 10 - One Creature | Attack: +`CHAIMP` vs Will\n"
++ "Hit: 1d6 +`CHAMOD` psychic damage and you are invisible to the target until the start of your next turn.";
+
+        static string HellishRebuke = "Hellish Rebuke\n"
++ "At-Will - Arcane, Fire, Implement - Standard - Ranged 10 - One Creature | Attack: +`CONIMP` vs Reflex\n"
++ "Hit: 1d6 +`CONMOD` fire damage.  If you take damage before the end of your next turn, the target takes an extra \n"
++ "1d6 +`CONMOD` fire damage"            ;
+
+        static string[] warlockAtWill = new string[] { DireRadiance, Eyebite, HellishRebuke };
+
+        // Warlock Encounters
+        static string DiabolicGrasp = "Diabolic Grasp\n"
++ "Encounter - Arcane, Implement - Standard - Ranged 10 - One Creature | Attack: +`CONIMP` vs Fortitude\n"
++ "Hit: 2d8 +`CONMOD` and you slide the target `INTMOD` squares.";
+
+        static string DreadfulWord = "Dreadful Word\n"
++ "Encounter - Arcane, Fear, Implement, Psychic - Standard - Ranged 5 - One Creature | Attack: +`CHAIMP` vs Will\n"
++ "Hit: 2d8 +`CHAMOD` psychic damage and the target takes a 1+`INTMOD` penalty to will defense until the end of your next turn.";
+
+        static string VampiricEmbrace = "Vampiric Embrace\n"
++ "Encounter - Arcane, Implement, Necrotic - Ranged 5 - One creature | Attack: +`CONIMP` vs Will\n"
++ "Hit: 2d8 +`CONMOD` necrotic damage and you gain 5 +`INTMOD` temporary hp.";
+
+        static string Witchfire = "Witchfire\n"
++ "Encounter - Arcane, Implement, Fire - Ranged 10 - One creature | Attack: +`CHAIMP` vs Reflex\n"
++ "Hit: 2d6 +`CHAMOD` fire damage and the target takes a 2+`INTMOD` penalty to attack rolls until the end of your next turn.";
+
+        static string[] warlockEncounter = new string[] { DiabolicGrasp, DreadfulWord, VampiricEmbrace, Witchfire };
+
+        // Warlock Level 2 Utility
+        static string BeguilingTongue = "Beguiling Tongue\n"
++ "Encounter - Arcane - Minor - Personal\n"
++ "Effect: You gain a +5 power bonus to your next Bluff, Diplomacy, or Intimidate check during this encounter.";
+
+        static string EtherealStride = "Ethereal Stride\n"
++ "Encounter - Arcane, Teleportation - Move - Personal\n"
++ "Effect: You can teleport 3 squares and you gain a +2 power bonus to all defenses until the end of your next turn.";
+
+        static string ShadowVeil = "Shadow Veil\n"
++ "Encounter - Arcane, Illusion - Minor - Personal\n"
++ "Effect: You gain a +5 power bonus to stealth checks until the end of your next turn.";
+
+        static string[] warlock2Utility = new string[] { BeguilingTongue, EtherealStride, ShadowVeil };
+
+        // Warlock Level 3 Encounter
+        static string EldritchRain = "Eldritch Rain\n"
++ "Encounter - Arcane, Implement - Standard - Ranged 10 - One Creature or two creatues within 5 squares | Attack: +`CHAIMP` vs Reflex\n"
++ "Hit: 1d10 +`CHAMOD` damage gain a +`INTMOD` to each die roll.";
+
+        static string FieryBolt = "Fiery Bolt\n"
++ "Encounter - Arcane, Fire, Implement - Standard - Ranged 10 - One Creature | Attack: +`CONIMP` vs Reflex\n"
++ "Hit: 3d6 +`CONMOD` fire damage, and creatures adjacent to the target take 1d6 +`CONMOD` +`INTMOD` fire damage.";
+
+        static string FrigidDarkness = "Frigid Darkness\n"
++ "Encounter - Arcane, Cold, Fear, Implement - Standard - Ranged 10 - One Creature | Attack: +`CONIMP` vs Fortitude\n"
++ "Hit: 2d8 +`CONMOD` cold damage, and the target grants combat advantage until the end of your next turn.  The target takes a `INT` penalty to AC.";
+
+        static string OtherwindStride = "Otherwind Stride\n"
++ "Encounter - Arcane, Implement, Teleportation - Standard - Close burst 1 - Each Creature in burst | Attack: +`CHAIMP` vs Fortitude\n"
++ "Hit: 1d8 +`CHAMOD` damage and the target is immobilized until the end of your next turn.  Effect: You teleport 5 +`INTMOD` squares.";
+
+        static string[] warlock3Encounter = new string[] { EldritchRain, FieryBolt, FrigidDarkness, OtherwindStride };
+
+        // Warlord Specials
+        static string CombatLeader = "You and each ally within 10 squares who can see and hear you gain a +2 bonus to initiative.";
+
+        static string CommandingPresence = "When an ally who can see you takes an extra action they heal `HALFLEVEL` + `CHAMOD`.  If that extra action is an attack \n"
++ "They may instead gain a +(`INTMOD` / 2 (rounded down)).";
+
+        static string InspiringWord = "Inspiring Word\n"
++ "Encounter - Martial, Healing - Minor - Close burst 5 - You or one ally in burst\n"
++ "Effect: The target can spend a healing surge and regian an additional 1d6 hit points.  Special: You can use this power twice per encounter but only once per round.";
+
+        // Warlords At-Wills
+        static string CommandersStrike = "Commander's Strike\n"
++ "At-Will - Martial, Weapon - Standard - Melee Weapon - One Creature | Attack: An ally of your choice makes a melee basic attack against the target\n"
++ "Hit: Ally's basic attack damage +`INTMOD`";
+
+        static string FuriousSmash = "Furious Smash\n"
++ "At-Will - Martial, Weapon - Standard - Melee Weapon - One Creature | Attack: +`STRWEA` vs Fortitude\n"
++ "Hit: Deal `STRMOD` damage and choose an adjacent target to you or the target.  The ally gains a +`CHAMOD` bonus to attack and damage roll of the next attack against the target.";
+
+        static string VipersStrike = "Viper's Strike\n"
++ "At-Will - Martial, Weapon - Standard - Melee Weapon - One Creature | Attack: +`STRWEA` vs AC\n"
++ "Hit: 1[W] +`STRMOD` damage.  Effect: If the target shifts before the start of your next turn, it provokes an opportunity attack from an ally of your choice.";
+
+        static string WolfPackTactics = "Wolf Pack Tactics\n"
++ "At-Will - Martial, Weapon - Standard - Melee Weapon - One Creature | Attack: +`STRWEA` vs AC\n"
++ "Hit: 1[w] +`STRMOD`.  Special: Before you attack, you let an ally adjacent to either you or the target shift 1 square as a free action.";
+
+        static string[] warlordAtWill = new string[] { CommandersStrike, FuriousSmash, VipersStrike, WolfPackTactics };
+
+        // Warlord Encounters
+        static string GuardingAttack = "Guarding Attack\n"
++ "Encounter - Martial, Weapon - Standard - Melee Weapon - One Creature | Attack: +`STRWEA` vs AC\n"
++ "Hit: 2[W] +`STRMOD` damage.  Until the end of your next turn, one ally adjacent to either you or the target gains +1 +`CHAMOD` bonus to AC against the target.";
+
+        static string HammerAndAnvil = "Hammer and Anvil\n"
++ "Encounter - Martial, Weapon - Standard - Melee Weapon - One Creature | Attack: +`STRWEA` vs Reflex\n"
++ "Hit: 1[W] +`STRMOD` damage.  One ally adjacent to the target makes a melee basic attack against the target.  The ally gets +`CHAMOD` to the damage role.";
+
+        static string LeafOnTheWind = "Leaf on the Wind\n"
++ "Encounter - Martial, Weapon - Standard - Melee Weapon - One creature | Attack: +`STRWEA` vs AC\n"
++ "Hit: 2[W] +`STRMOD` damage.  You or an ally adjacent to the target swaps places with the target.";
+
+        static string WarlordsFavor = "Warlord's Favor\n"
++ "Encounter - Martial, Weapon - Standard - Melee Weapon - One creature | Attack: +`STRWEA` vs AC\n"
++ "Hit: 2[W] +`STRMOD`.  One ally within 5 squares of you gains +1 +`INTMOD` to attack rolls against the target until the end of your next turn.";
+
+        static string[] warlordEncounter = new string[] { GuardingAttack, HammerAndAnvil, LeafOnTheWind, WarlordsFavor };
+
+        // Warlord Level 2 Utility
+        static string AidTheInjured = "Aid the Injured\n"
++ "Encounter - Healing, Martial - Standard - Melee touch - You or one adjacent ally\n"
++ "Effect: The target can spend a healing surge.";
+
+        static string CrescendoOfViolence = "Crescendo of Violence\n"
++ "Encounter - Martial - Immediate Reaction - Ranged 5\n"
++ "Trigger: An ally within range scores a critical hit. Effect: The ally gains `CHAMOD` temporary hp.";
+
+        static string KnightsMove = "Knight's Move\n"
++ "Encounter - Martial - Move - Ranged 10 - One ally\n"
++ "Effect: The target takes a move action as a free action.";
+
+        static string ShakeIfOff = "Shake it Off\n"
++ "Encounter - Martial - Minor - Ranged 10 - You or one ally\n"
++ "Effect: The target makes a saving throw with a +`CHAMOD` bonus";
+
+        static string[] warlord2Utility = new string[] { AidTheInjured, CrescendoOfViolence, KnightsMove, ShakeIfOff };
+
+        // Warlord Level 3 Encounter
+        static string HoldTheLine = "Hold the Line\n"
++ "Encounter - Martial, Weapon - Standard - Melee Weapon - One Creature | Attack: +`STRWEA` vs AC\n"
++ "Hit: 1[W] +`STRMOD` damage.  Effect: Until the end of your next turn, allies adjacent to you gain a +2 bonus to AC and cannot be pulled, pushed, or slid.";
+
+        static string InspiringWarCry = "Inspiring War Cry\n"
++ "Encounter - Martial, Weapon - Standard - Melee Weapon - One Creature | Attack: +`STRWEA` vs AC\n"
++ "Hit: 2[W] +`STRMOD`.  Effect: One ally who can hear you and is within 5 squares of you makes a saving throw.";
+
+        static string SteelMonsoon = "Steel Monsoon\n"
++ "Encounter - Martial, Weapon - Standard - Melee Weapon - One Creature | Attack: +`STRWEA` vs AC\n"
++ "Hit: 2[W] +`STRMOD` damage, and `INTMOD` allies within 5 squares of you can shift 1 square.";
+
+        static string WarlordsStrike = "Warlord's Strike\n"
++ "Encounter - Martial, Weapon - Standard - Melee Weapon - One creature | Attack: +`STRWEA` vs AC\n"
++ "Hit: 2[W] +`STRMOD` damage.  Until the end of your next turn, all of your allies gain +1 +`INTMOD` to damage rolls against the target.";
+
+        static string[] warlord3Encounter = new string[] { HoldTheLine, InspiringWarCry, SteelMonsoon, WarlordsStrike };
+
+
 
     } // end class ArchType
 } // end NameSpace

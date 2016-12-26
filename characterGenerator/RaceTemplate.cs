@@ -247,9 +247,8 @@ namespace characterGenerator
         static string DwarvenResilience = "Dwarven Resilience: You can use your second wind as a minor action instead of a standard action";
         static string StandYourGround = "Stand Your Ground: When an effect forces you to move through a pull, push or slide, you can move 1 square less."
             + "  In addition when an attack knocks you prone you may immediately make a saving throw to avoid falling prone.";
-        static string EncumberedSpeed = "You can use a speed of 5 instead of the listed speed even if encumbered.";
 
-        static string[] dwarfSpecials = new string[] { CastIronStomach, DwarvenResilience, StandYourGround, EncumberedSpeed };
+        static string[] dwarfSpecials = new string[] { CastIronStomach, DwarvenResilience, StandYourGround };
 
         // Eladrin Specials
         static string FeyOrigen = "Fey Origen: You are considered native to the Feywild and considered a fey creature.";

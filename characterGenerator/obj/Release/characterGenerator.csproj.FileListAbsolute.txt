@@ -13,3 +13,18 @@ C:\Users\klevalley2\Documents\Visual Studio 2015\Projects\characterGenerator\cha
 C:\Users\klevalley2\Documents\Visual Studio 2015\Projects\characterGenerator\characterGenerator\obj\Release\characterGenerator.pdb
 C:\Users\klevalley2\Documents\Visual Studio 2015\Projects\characterGenerator\characterGenerator\obj\Release\CharSheet.g.cs
 C:\Users\klevalley2\Documents\Visual Studio 2015\Projects\characterGenerator\characterGenerator\obj\Release\CharSheet.baml
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\bin\Release\characterGenerator.exe.config
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\obj\Release\characterGenerator.exe
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\obj\Release\characterGenerator.pdb
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\bin\Release\characterGenerator.exe
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\bin\Release\characterGenerator.pdb
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\obj\Release\CharSheet.g.cs
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\obj\Release\MainWindow.g.cs
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\obj\Release\App.g.cs
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\obj\Release\characterGenerator_MarkupCompile.cache
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\obj\Release\characterGenerator_MarkupCompile.lref
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\obj\Release\CharSheet.baml
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\obj\Release\MainWindow.baml
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\obj\Release\characterGenerator.g.resources
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\obj\Release\characterGenerator.Properties.Resources.resources
+C:\Users\klevalley2\Source\Repos\DnD-Tavern\characterGenerator\obj\Release\characterGenerator.csproj.GenerateResource.Cache

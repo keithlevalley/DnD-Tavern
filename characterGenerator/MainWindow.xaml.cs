@@ -136,16 +136,59 @@ namespace characterGenerator
                 }
                 else race = "Human";
 
+                /*
                 while (roles.Sum() < numChars)
                 {
                     for (int j = 0; j < roles.Length; j++)
                     {
                         roles[j]++;
                     }
+                }*/
+
+                //bool loop = true;
+                
+                if (roles[0] > 0)
+                {
+                    type = "Damage";
+                    roles[0]--;
                 }
+                else if (roles[1] > 0)
+                {
+                    type = "Defense";
+                    roles[1]--;
+                }
+                /*
+                else if (roles[2] > 0)
+                {
+                    type = "Control";
+                }*/
+                else if (roles[3] > 0)
+                {
+                    type = "Leader";
+                    roles[3]--;
+                }
+                else
+                {
+                    switch (rand.Next(4))
+                    {
+                        case 0:
+                            type = "Damage";
+                            break;
+                        case 1:
+                            type = "Defense";
+                            break;
+                        case 2:
+                            type = "Damage";
+                            break;
+                        case 3:
+                            type = "Leader";
+                            break;
+                        default:
+                            break;
+                    }
+                } // end else
 
-                bool loop = true;
-
+                /*
                 while (loop)
                 {
                     temp = rand.Next(4);
@@ -175,21 +218,51 @@ namespace characterGenerator
                         loop = false;
                     }
                 } // end while
+                */
 
-                if (rand.Next(2) == 0)
+                if (type == "Damage")
                 {
-                    if (type == "Damage") archType = "Rogue";
-                    if (type == "Defense") archType = "Fighter";
-                    if (type == "Control") archType = "Wizard";
-                    if (type == "Leader") archType = "Cleric";
+                    switch (rand.Next(3))
+                    {
+                        case 0: archType = "Warlock";
+                            break;
+                        case 1: archType = "Ranger";
+                            break;
+                        case 2: archType = "Rogue";
+                            break;
+                        default:
+                            break;
+                    }
                 }
 
-                else
+                else if (type == "Defense")
                 {
-                    if (type == "Damage") archType = "Warlock";
-                    if (type == "Defense") archType = "Paladin";
-                    if (type == "Control") archType = "Ranger";
-                    if (type == "Leader") archType = "Warlord";
+                    switch (rand.Next(2))
+                    {
+                        case 0:
+                            archType = "Fighter";
+                            break;
+                        case 1:
+                            archType = "Paladin";
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                else if (type == "Leader")
+                {
+                    switch (rand.Next(2))
+                    {
+                        case 0:
+                            archType = "Cleric";
+                            break;
+                        case 1:
+                            archType = "Warlord";
+                            break;
+                        default:
+                            break;
+                    }
                 }
 
                 charSheets.Add(new CharSheet(level, race, archType));

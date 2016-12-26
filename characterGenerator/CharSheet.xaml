@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:characterGenerator"
         mc:Ignorable="d"
         Title="CharSheet" Height="1900" Width="1440"
-        FontSize="14">
+        FontSize="12">
     <Grid >
         <StackPanel Orientation="Vertical" Margin="10,0,0,0">
             <StackPanel Name="basicInfo" Orientation="Horizontal" HorizontalAlignment="Left">
