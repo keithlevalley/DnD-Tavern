@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:characterGenerator"
         mc:Ignorable="d"
-        Title="CharSheet" Height="1900" Width="1440"
-        FontSize="12">
+        Title="CharSheet" Height="1650" Width="1225"
+        FontSize="16">
     <Grid >
         <StackPanel Orientation="Vertical" Margin="10,0,0,0">
             <StackPanel Name="basicInfo" Orientation="Horizontal" HorizontalAlignment="Left">

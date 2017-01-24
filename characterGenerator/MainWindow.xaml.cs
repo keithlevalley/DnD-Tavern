@@ -4,6 +4,8 @@ using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -146,7 +148,7 @@ namespace characterGenerator
                 }*/
 
                 //bool loop = true;
-                
+
                 if (roles[0] > 0)
                 {
                     type = "Damage";
@@ -224,11 +226,14 @@ namespace characterGenerator
                 {
                     switch (rand.Next(3))
                     {
-                        case 0: archType = "Warlock";
+                        case 0:
+                            archType = "Warlock";
                             break;
-                        case 1: archType = "Ranger";
+                        case 1:
+                            archType = "Ranger";
                             break;
-                        case 2: archType = "Rogue";
+                        case 2:
+                            archType = "Rogue";
                             break;
                         default:
                             break;
@@ -268,36 +273,17 @@ namespace characterGenerator
                 charSheets.Add(new CharSheet(level, race, archType));
             } // end for
 
-            foreach (CharSheet item in charSheets)
+            PrintDialog pd = new PrintDialog();
+
+            if (pd.ShowDialog() == true)
             {
-                item.Show();
-
-                RenderTargetBitmap targetBitmap =
-                    new RenderTargetBitmap(
-                        (int)item.Width,
-                        (int)item.Height, 96,96,
-                        PixelFormats.Default);
-                targetBitmap.Render(item);
-
-                // add the RenderTargetBitmap to a Bitmapencoder
-
-                BmpBitmapEncoder encoder = new BmpBitmapEncoder();
-
-                encoder.Frames.Add(BitmapFrame.Create(targetBitmap));
-
-
-
-                // save file to disk
-
-                FileStream fs = File.Open("charSheets/" +  item.labelClass.Content + item.labelRace.Content + counter.ToString() + ".bmp", FileMode.OpenOrCreate);
-                counter++;
-
-                encoder.Save(fs);
-
-                item.Close();
-                fs.Close();
-                
-            } // end foreach
+                foreach (CharSheet item in charSheets)
+                {
+                    item.Show();
+                    pd.PrintVisual(item, "");
+                    item.Close();
+                }
+            }
         } // end submit
 
     } // end main Window Class
